@@ -1,3 +1,8 @@
+package operations;
+
+
+import ATM.Account;
+
 public class MoneyTranfer extends Operation {
     private int recipient;
     private int amountOfMoney;

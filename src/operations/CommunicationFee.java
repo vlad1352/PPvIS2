@@ -1,4 +1,10 @@
+package operations;
+
+import ATM.Account;
+import operations.Operation;
+
 public class CommunicationFee extends Operation {
+
     private String type;
     private int number;
     private String operator;

@@ -1,7 +1,14 @@
+package ATM;
+
 public class Account {
 
     private  double amountOfMoney;
     private BankCard bankCard;
+
+    Account(BankCard bankCard){
+        this.bankCard = bankCard;
+        amountOfMoney = 1000;
+    }
 
     public double amountOnTheAccount(){
         return amountOfMoney;
@@ -21,6 +28,10 @@ public class Account {
 
     public void setAmountOfMoney(double amount){
         amountOfMoney = amount;
+    }
+
+    public void acceptMoney(double money){
+        amountOfMoney += money;
     }
 
 
