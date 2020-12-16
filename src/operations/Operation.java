@@ -6,7 +6,7 @@ public class Operation {
 
     private  Check check;
     protected String operationName;
-    private UserWindow userWindow;
+    public UserWindow userWindow;
 
     public void execute(){
 

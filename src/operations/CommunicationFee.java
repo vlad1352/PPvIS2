@@ -10,21 +10,24 @@ public class CommunicationFee extends Operation {
     private String operator;
     private double amountOfMoney;
 
-    @Override
-    public void execute() {
-
+    public CommunicationFee(){
+        operationName = "Платеж за связь";
     }
 
-    public Boolean checkSolvency(Account account){
-        Boolean check = false;
+    @Override
+    public void execute() {
+        userWindow.createWindow(this);
+    }
 
+    public Boolean checkSolvency(Account account, double money){
+        Boolean check = false;
+            if(account.withdrawMoney(money))
+                check = true;
         return check;
     }
 
-    public Boolean makeATransfer(Account account){
-        Boolean tranfer = false;
-
-        return tranfer;
+    public Boolean makeATransfer(Account account, double money){
+        return checkSolvency(account, money);
     }
 
     public String getType() {

@@ -19,11 +19,13 @@ public class ATM {
         atmMoney = new Money();
         atmMoney.setAmountOfMoney(2000);
         atmMoney.setCurrency("BYN");
+        userWindow = new UserWindow(this);
 
         AccountView accountView = new AccountView();
+        accountView.setUserWindow(userWindow);
         operations.add(accountView);
 
-        userWindow = new UserWindow(this);
+
     }
 
     public Boolean checkPin(int pin){
@@ -55,24 +57,25 @@ public class ATM {
     }
 
     public void acceptMoney(double money){
-        Account account = new Account(bankCard);
-        account.acceptMoney(money);
+
     }
-    public double giveOutMoney(){
-        double money = 0;
-        return money;
+
+    public void giveOutMoney(double money){
+        this.atmMoney.deductMoney(money);
     }
 
     public void takeOperation(String operationName){
         for (Operation operat : operations) {
             if(operat.getOperationName().equals(operationName)){
                 startOperation(operat);
+                break;
             }
-            break;
+
         }
     }
+
     public  void startOperation(Operation operation){
-        userWindow.createWindow(operation);
+        operation.execute();
     }
 
 

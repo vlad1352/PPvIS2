@@ -11,10 +11,10 @@ public class AccountView extends Operation {
 
     @Override
     public void execute(){
-
+        userWindow.createWindow(this);
     }
 
-    public void withdraw(Account account){
-
+    public double withdraw(Account account){
+        return account.amountOnTheAccount();
     }
 }

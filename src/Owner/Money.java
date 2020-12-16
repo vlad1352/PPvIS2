@@ -2,7 +2,7 @@ package Owner;
 
 public class Money {
     private String currency;
-    private double amountOfMoney;
+    private double amountOfMoney = 100;
 
     public void addMoney(double money){
         amountOfMoney += money;

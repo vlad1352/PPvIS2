@@ -9,6 +9,10 @@ public class TakeMoney extends Operation{
     private String currency;
     private double amount;
 
+    public TakeMoney(){
+        operationName = "Забрать деньги";
+    }
+
     public Boolean checkSolvency(Account account, double checkMoney){
         Boolean check = false;
         if (account.amountOnTheAccount() > checkMoney)
@@ -20,6 +24,8 @@ public class TakeMoney extends Operation{
         Boolean check = false;
         if (checkSolvency(account, money)){
             check = true;
+            atm.giveOutMoney(money);
+            ownerOfTheCard.takeCash(money);
         }
         return  check;
 
