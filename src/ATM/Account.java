@@ -5,7 +5,7 @@ public class Account {
     private  double amountOfMoney;
     private BankCard bankCard;
 
-    Account(BankCard bankCard){
+    public Account(BankCard bankCard){
         this.bankCard = bankCard;
         amountOfMoney = 1000;
     }

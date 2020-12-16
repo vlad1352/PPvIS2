@@ -2,8 +2,7 @@ package ATM;
 
 import Owner.Money;
 import UI.UserWindow;
-import operations.AccountView;
-import operations.Operation;
+import operations.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,18 +14,7 @@ public class ATM {
     private UserWindow userWindow;
     private List<Operation> operations = new ArrayList<>();
 
-    public ATM(){
-        atmMoney = new Money();
-        atmMoney.setAmountOfMoney(2000);
-        atmMoney.setCurrency("BYN");
-        userWindow = new UserWindow(this);
-
-        AccountView accountView = new AccountView();
-        accountView.setUserWindow(userWindow);
-        operations.add(accountView);
-
-
-    }
+    public ATM(){ }
 
     public Boolean checkPin(int pin){
     Boolean checkPin;
@@ -39,10 +27,6 @@ public class ATM {
 
     public Boolean authentication(int pin){
         return checkPin(pin);
-    }
-
-    public BankCard getBankCard() {
-        return bankCard;
     }
 
     public Boolean   acceptCard (BankCard bankCard){
@@ -58,6 +42,20 @@ public class ATM {
 
     public void acceptMoney(double money){
 
+    }
+
+    public void setOperations(){
+        AccountView accountView = new AccountView();
+        accountView.setUserWindow(userWindow);
+        operations.add(accountView);
+        CommunicationFee communicationFee = new CommunicationFee();
+        operations.add(communicationFee);
+        MoneyTranfer moneyTranfer = new MoneyTranfer();
+        operations.add(moneyTranfer);
+        TakeCard takeCard = new TakeCard();
+        operations.add(takeCard);
+        TakeMoney takeMoney = new TakeMoney();
+        operations.add(takeMoney);
     }
 
     public void giveOutMoney(double money){
@@ -78,7 +76,24 @@ public class ATM {
         operation.execute();
     }
 
+    public void setBankCard(BankCard bankCard){
+        this.bankCard = bankCard;
+    }
+    public BankCard getBankCard(){
+        return bankCard;
+    }
 
+    public void setAtmMoney(Money atmMoney){
+        this.atmMoney = atmMoney;
+    }
+    public Money getAtmMoney(){
+        return atmMoney;
+    }
 
-
+    public void setUserWindow(UserWindow userWindow){
+        this.userWindow = userWindow;
+    }
+    public UserWindow getUserWindow(){
+        return userWindow;
+    }
 }
